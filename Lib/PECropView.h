@@ -31,4 +31,6 @@
 
 - (void)setRotationAngle:(CGFloat)rotationAngle snap:(BOOL)snap;
 
+- (void)setBorderImage:(UIImage *)image;
+
 @end

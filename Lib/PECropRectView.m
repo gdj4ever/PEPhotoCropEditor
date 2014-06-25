@@ -23,6 +23,8 @@
 @property (nonatomic) CGRect initialRect;
 @property (nonatomic) CGFloat fixedAspectRatio;
 
+@property (nonatomic) UIImageView *borderImageView;
+
 @end
 
 @implementation PECropRectView
@@ -37,10 +39,10 @@
         self.showsGridMajor = YES;
         self.showsGridMinor = NO;
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectInset(self.bounds, -2.0f, -2.0f)];
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        imageView.image = [[UIImage imageNamed:@"PEPhotoCropEditor.bundle/PEPhotoCropEditorBorder"] resizableImageWithCapInsets:UIEdgeInsetsMake(23.0f, 23.0f, 23.0f, 23.0f)];
-        [self addSubview:imageView];
+        self.borderImageView = [[UIImageView alloc] initWithFrame:CGRectInset(self.bounds, -2.0f, -2.0f)];
+        self.borderImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self setBorderImage:[UIImage imageNamed:@"PEPhotoCropEditor.bundle/PEPhotoCropEditorBorder"]];
+        [self addSubview:self.borderImageView];
         
         self.topLeftCornerView = [[PEResizeControl alloc] init];
         self.topLeftCornerView.delegate = self;
@@ -346,6 +348,12 @@
     rect.size = CGSizeMake(width, height);
     
     return rect;
+}
+
+#pragma mark -
+
+- (void)setBorderImage:(UIImage *)image {
+    self.borderImageView.image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(23.0f, 23.0f, 23.0f, 23.0f)];
 }
 
 @end

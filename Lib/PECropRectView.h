@@ -18,6 +18,8 @@
 
 @property (nonatomic) BOOL keepingAspectRatio;
 
+- (void)setBorderImage:(UIImage *)image;
+
 @end
 
 @protocol PECropRectViewDelegate <NSObject>

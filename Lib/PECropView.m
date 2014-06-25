@@ -517,4 +517,10 @@ static const CGFloat MarginRight = MarginLeft;
     *targetContentOffset = contentOffset;
 }
 
+#pragma mark -
+
+- (void)setBorderImage:(UIImage *)image {
+    [self.cropRectView setBorderImage:image];
+}
+
 @end
