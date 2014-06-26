@@ -10,7 +10,11 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVFoundation.h>
 
+@protocol PECropViewDelegate;
+
 @interface PECropView : UIView
+
+@property (nonatomic, weak) id<PECropViewDelegate> delegate;
 
 @property (nonatomic) UIImage *image;
 @property (nonatomic, readonly) UIImage *croppedImage;
@@ -32,5 +36,13 @@
 - (void)setRotationAngle:(CGFloat)rotationAngle snap:(BOOL)snap;
 
 - (void)setBorderImage:(UIImage *)image;
+
+@end
+
+@protocol PECropViewDelegate <NSObject>
+
+- (void)cropRectViewDidBeginEditing;
+- (void)cropRectViewEditingChanged;
+- (void)cropRectViewDidEndEditing;
 
 @end
