@@ -41,6 +41,7 @@
 
 @protocol PECropViewDelegate <NSObject>
 
+@optional
 - (void)cropRectViewDidBeginEditing;
 - (void)cropRectViewEditingChanged;
 - (void)cropRectViewDidEndEditing;
